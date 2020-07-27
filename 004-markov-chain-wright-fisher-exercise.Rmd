@@ -11,7 +11,8 @@ Big Note: Even though we are doing Monte Carlo with a Markov chain here,
 this is _not_ Markov chain Monte Carlo.
 
 As before, here is our Wright-Fisher simulation function:
-```{r}
+```{r, message=FALSE}
+library(tidyverse)
 #' simulate R reps of a Wright-Fisher model of size N haploids for T generations from an initial allele count of X0
 #'
 #' Default values for the simulatiions are given as shown.
@@ -88,7 +89,7 @@ values in exercise 1.  Does it appear that there is a single, unique
 limiting distribution for this Markov chain? (i.e., so long as you
 run it long enough, the probability
 of being found in any state is unaffected by where you start).
-3. Start at state $X_0=5$ in the chain, but run only a single
+3. Start at state $X_0=5$ in the chain with $N = 10$, but run only a single
 replicate, $R=1$, for $T = 10,000$ generations.  But this time, look
 at the distribution of states across the 10,000 time steps
 in that single run.  Compare it to the distribution across the $R=1000$
