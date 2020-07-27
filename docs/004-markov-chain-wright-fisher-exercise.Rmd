@@ -62,27 +62,6 @@ for $T = 500$ generations, from each of the possible starting
 points $X_0 = 0,\ldots,10$.  Use Monte Carlo sampling to approximate
 the distribution of states at $T = 500$ for each of the starting
 values.
-
-
-```{r}
-
-
-library(tidyverse)
-
-L <- list()
-
-for (i in 1:10) {
-  
-  L[[i]] <- WF(R=1000, N=10, T=500, X0=10)
-  
-}
-
-
-
-
-```
-
-
 2. Compare the results you obtained for the different starting
 values in exercise 1.  Does it appear that there is a single, unique
 limiting distribution for this Markov chain? (i.e., so long as you
@@ -96,5 +75,4 @@ replicates with $X_0 = 5$ of exercise 1. How do they compare?
 4. Is the Markov chain made by the Wright-Fisher population ergodic?
 5. If not, which of the three conditions---recurrence, aperiodicity, or
 irreducibility---is violated?
-
 

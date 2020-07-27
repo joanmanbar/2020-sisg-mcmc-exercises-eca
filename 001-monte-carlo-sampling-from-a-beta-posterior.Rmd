@@ -1,6 +1,8 @@
 ---
 title: "Monte Carlo Sampling from a Beta-Distribution Posterior"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 In the previous session, we encountered the Beta distribution and 
@@ -63,14 +65,43 @@ S <- rbeta(1000, 31, 71)
 
 1. First get a visual approximation of the posterior distribution (as a histogram)
 using a Monte Carlo sample of size 1,000,000.
+
+```{r }
+S <- rbeta(100000, 31, 71)
+S2 <- rbeta(100, 31, 71)
+hist(S)
+```
 1. Find the posterior mean of the allele frequency from 5 different Monte Carlo samples of size 1000.
+
+```{r}
+# lapply(1:5, function(x) median(rbeta(100000, 31, 71)))
+
+par(mfrow = c(1, 2))
+hist(S, breaks = seq(-0.01, 1.02, by = 0.01))
+hist(S2, breaks = seq(-0.01, 1.02, by = 0.01))
+
+
+```
+
 1. Do the same for 5 different Monte Carlo samples of size 100
+
 1. Find the posterior median.
+
 1. Evaluate the posterior probability that the allele frequency is greater than 0.35.  Do this
 for multiple Monte Carlo samples of size 1000 and 100.
+
+```{r}
+mean(S > 0.35)
+1 - pbeta(0.35, 31, 71)
+
+
+```
+
 1. For each of the above, identify what we called $g(x)$ in the lecture [though, in this context
 it is really $g(q)$]---the function of the random variable whose expectation
 is being evaluated.
+
+
 1. The quantiles of a Monte Carlo sample from a posterior distribution
 can provide an estimate of credible intervals.
 Approximate the equal-tail, 90% credible interval for the allele frequency.
